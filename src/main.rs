@@ -6,7 +6,12 @@ use components::button::Button;
 #[function_component(App)]
 fn app() -> Html {
     html! {
-        <Button />
+        <>
+            <Button content="S1" />
+            <Button content="S2" />
+            <Button content="S3" />
+            <Button content="S4" />
+        </>
     }
 }
 
