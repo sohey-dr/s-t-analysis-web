@@ -1,7 +1,8 @@
 mod components;
 
 use yew::prelude::*;
-use components::button::Button;
+
+use components::button_list::ButtonList;
 
 #[function_component(App)]
 fn app() -> Html {
@@ -24,17 +25,7 @@ fn app() -> Html {
                 { "Click me" }
             </button>
 
-            <div class="flex justify-center my-5">
-            { for (0..5).map(|i| html! {
-                    <Button content={ format!("T{}", i) } />
-            }) }
-            </div>
-
-            <div class="flex justify-center my-5">
-            { for (0..5).map(|i| html! {
-                    <Button content={ format!("S{}", i) } />
-            }) }
-            </div>
+            <ButtonList />
         </>
     }
 }
