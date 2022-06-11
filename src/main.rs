@@ -6,7 +6,7 @@ use components::button_list::ButtonList;
 
 #[function_component(App)]
 fn app() -> Html {
-    let selected = use_state(|| "".to_string());
+    let selected = use_state(|| "未選択".to_string());
 
     html! {
         <>
