@@ -17,6 +17,6 @@ cargo install wasm-bindgen-cli
 
 Start the server.
 
-````bash
+```bash
 trunk serve
 ```
