@@ -1,12 +1,15 @@
+mod components;
+
 use yew::prelude::*;
+use components::button::Button;
 
 #[function_component(App)]
 fn app() -> Html {
     html! {
-        <h1>{ "Hello World" }</h1>
+        <Button />
     }
 }
 
 fn main() {
-    yew::Renderer::<App>::new().render();
+    yew::start_app::<App>();
 }
