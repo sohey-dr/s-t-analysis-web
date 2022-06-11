@@ -11,6 +11,7 @@ fn app() -> Html {
         Callback::from(move |_| selected.set("Clicked!".to_string()))
     };
 
+
     html! {
         <>
             <div class="flex justify-center">
@@ -23,18 +24,16 @@ fn app() -> Html {
                 { "Click me" }
             </button>
 
-            // TODO: forなどで回して、Buttonを複数表示する
             <div class="flex justify-center my-5">
-                <Button content="S1" />
-                <Button content="S2" />
-                <Button content="S3" />
-                <Button content="S4" />
+            { for (0..5).map(|i| html! {
+                    <Button content={ format!("T{}", i) } />
+            }) }
             </div>
+
             <div class="flex justify-center my-5">
-                <Button content="T1" />
-                <Button content="T2" />
-                <Button content="T3" />
-                <Button content="T4" />
+            { for (0..5).map(|i| html! {
+                    <Button content={ format!("S{}", i) } />
+            }) }
             </div>
         </>
     }
