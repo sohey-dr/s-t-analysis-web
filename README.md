@@ -1,6 +1,6 @@
-# student-t-test-web
+# S-T analysis web
 
-William Sealy Gosset's Student t-test on the web
+the S-T analysis on the web.
 
 ## Getting Started
 
