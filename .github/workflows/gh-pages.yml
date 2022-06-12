@@ -1,27 +1,34 @@
-name: Deploy
+name: Deploy to Github pages
 
 on:
   push:
-    branches: [ main ]
-
-env:
-  CARGO_TERM_COLOR: always
+    branches: [master]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - run: rustup target add wasm32-unknown-unknown
-    - run: cargo install trunk
-    - run: trunk build --release --public-url student-t-test-web
-    - run: cp -r ./dist/ ./public/
+      - uses: actions/checkout@v2
 
-    - run: chmod 777 ./bin/path_fix.sh
-    - run: ./bin/path_fix.sh
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: wasm32-unknown-unknown
 
-    - uses: peaceiris/actions-gh-pages@v3
-      if: ${{ github.ref == 'refs/heads/main' }}
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Install
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
