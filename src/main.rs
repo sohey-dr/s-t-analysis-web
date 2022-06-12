@@ -11,7 +11,11 @@ fn app() -> Html {
     html! {
         <>
             <div class="flex justify-center">
-                <h1>{ (*selected).clone() }</h1>
+                <h1 class="text-3xl font-bold text-center">{ "選択されている要素" }</h1>
+            </div>
+
+            <div class="flex justify-center mt-3">
+                <span class="text-2xl text-center">{ (*selected).clone() }</span>
             </div>
 
             <ButtonList selected={ selected } />
