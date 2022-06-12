@@ -8,9 +8,9 @@ pub struct ButtonProps {
 
 #[function_component(Button)]
 pub fn button(props: &ButtonProps) -> Html {
-    let content = props.content.clone();
     let onclick = {
         let selected = props.selected.clone();
+        let content  = props.content.clone();
         Callback::from(move |_| selected.set(content.clone()))
     };
 
