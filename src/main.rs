@@ -22,7 +22,7 @@ fn app() -> Html {
             <ButtonList selected={ selected } />
 
             <div class="flex justify-center mt-3">
-                <input type="number" name="seconds" value="10" />
+                <input type="number" name="seconds" value="10" id="seconds" class="text-center" />
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     { "秒でStart" }
                 </button>
