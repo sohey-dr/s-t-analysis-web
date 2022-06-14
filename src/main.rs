@@ -11,6 +11,7 @@ fn app() -> Html {
     let selected = use_state(|| "未選択".to_string());
     let seconds = use_state(|| 5);
 
+    // TODO: データを作成する処理は時間を設定した後にする
     let act_log = use_state(Vec::new);
     {
         let act_log = act_log.clone();
