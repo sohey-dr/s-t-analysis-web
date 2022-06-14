@@ -18,6 +18,7 @@ fn app() -> Html {
                 <span class="text-2xl text-center">{ (*selected).clone() }</span>
             </div>
 
+            // TODO: ActStyleButtonなど適切な名前に変更する
             <ButtonList selected={ selected } />
 
             <div class="flex justify-center mt-3">
