@@ -10,7 +10,7 @@ fn app() -> Html {
 
     html! {
         <>
-            <div class="flex justify-center">
+            <div class="flex justify-center mt-3">
                 <h1 class="text-3xl font-bold text-center">{ "選択されている要素" }</h1>
             </div>
 
@@ -19,6 +19,13 @@ fn app() -> Html {
             </div>
 
             <ButtonList selected={ selected } />
+
+            <div class="flex justify-center mt-3">
+                <input type="number" name="seconds" value="10" />
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    { "秒でStart" }
+                </button>
+            </div>
         </>
     }
 }
