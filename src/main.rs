@@ -2,7 +2,7 @@ mod components;
 
 use yew::prelude::*;
 
-use components::button_list::ButtonList;
+use components::act_style_button_list::ActStyleButtonList;
 
 #[function_component(App)]
 fn app() -> Html {
@@ -34,22 +34,21 @@ fn app() -> Html {
                 <span class="text-2xl text-center">{ (*selected).clone() }</span>
             </div>
 
-            // TODO: ActStyleButtonなど適切な名前に変更する
-            <ButtonList selected={ selected } />
+            <ActStyleButtonList selected={ selected } />
 
             <div class="flex justify-center mt-3">
                 // TODO: 数字をinputから変更できるようにする
                 <input
                     type="number"
                     name="seconds"
-                    value={(*seconds).clone().to_string()}
+                    value={ (*seconds).clone().to_string() }
                     { oninput }
                     id="seconds"
                     class="text-center"
                 />
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <act_style_button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     { "秒でStart" }
-                </button>
+                </act_style_button>
             </div>
         </>
     }
