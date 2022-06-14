@@ -8,7 +8,7 @@ use components::button_list::ButtonList;
 fn app() -> Html {
     let selected = use_state(|| "未選択".to_string());
 
-    let seconds = use_state(|| 0);
+    let seconds = use_state(|| 5);
     let oninput = {
         let seconds = seconds.clone();
         Callback::from(move |e: InputEvent| {
@@ -16,7 +16,6 @@ fn app() -> Html {
             match value {
                 Some(value) => {
                     seconds.set(value.parse::<i32>().unwrap());
-                    print!("{}", value);
                 },
                 None => {
                     seconds.set((*seconds).clone());
@@ -39,6 +38,7 @@ fn app() -> Html {
             <ButtonList selected={ selected } />
 
             <div class="flex justify-center mt-3">
+                // TODO: 数字をinputから変更できるようにする
                 <input
                     type="number"
                     name="seconds"
