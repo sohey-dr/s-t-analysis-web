@@ -1,7 +1,14 @@
 use yew::{function_component, html, use_state};
 use yew_hooks::use_interval;
 
+use serde::{Deserialize, Serialize};
+
 use crate::components::act_style_button_list::ActStyleButtonList;
+
+#[derive(Serialize, Deserialize)]
+pub struct QueryParams {
+    pub seconds: String,
+}
 
 #[function_component(Recording)]
 pub fn recording() -> Html {
