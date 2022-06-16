@@ -1,6 +1,6 @@
 # S-T analysis web
 
-the S-T analysis on the web.
+S-T analysis on the web.
 
 ## Getting Started
 
@@ -18,5 +18,5 @@ cargo install wasm-bindgen-cli
 Start the server.
 
 ```bash
-trunk serve
+trunk serve --open
 ```
