@@ -1,14 +1,12 @@
-use yew::{function_component, html, Properties, Callback, InputEvent};
+use yew::{function_component, html, Callback, InputEvent, use_state};
 
-#[derive(Properties, PartialEq)]
-pub struct SecondsSetterProps {
-    pub seconds: yew::UseStateHandle<i32>,
-}
 
 #[function_component(SecondsSetter)]
-pub fn seconds_setter(props: &SecondsSetterProps) -> Html {
+pub fn seconds_setter() -> Html {
+    let seconds = use_state(|| 0);
+
     let oninput = {
-        let seconds = (*props).seconds.clone();
+        let seconds = seconds.clone();
         Callback::from(move |e: InputEvent| {
             let value = e.data();
             match value {
@@ -33,7 +31,7 @@ pub fn seconds_setter(props: &SecondsSetterProps) -> Html {
             <input
                 type="text"
                 name="seconds"
-                value={ (*props).seconds.clone().to_string() }
+                value={ (*seconds).clone().to_string() }
                 { oninput }
                 id="seconds"
                 class="text-center"
