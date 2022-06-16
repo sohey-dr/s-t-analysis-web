@@ -4,6 +4,7 @@ use yew_hooks::use_interval;
 use serde::{Deserialize, Serialize};
 
 use crate::components::act_style_button_list::ActStyleButtonList;
+use crate::components::time_meter::TimeMeter;
 
 #[derive(Serialize, Deserialize)]
 pub struct QueryParams {
@@ -40,6 +41,10 @@ pub fn recording() -> Html {
             </div>
 
             <ActStyleButtonList selected={ selected } />
+
+            <div class="flex justify-center mt-3">
+                <TimeMeter /> { "秒経過" }
+            </div>
         </>
     }
 }
