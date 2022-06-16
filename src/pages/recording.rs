@@ -11,11 +11,11 @@ pub fn recording() -> Html {
     let act_log = use_state(Vec::new);
     {
         let act_log = act_log.clone();
-
+        let selected = selected.clone();
         use_interval(
             move || {
                 let mut old = (*act_log).clone();
-                old.push(selected.clone());
+                old.push((*selected).clone());
                 act_log.set(old);
             },
             5000,
