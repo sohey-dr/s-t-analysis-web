@@ -17,6 +17,9 @@ jobs:
     - run: trunk build --release --public-url s-t-analysis-web
     - run: cp -r ./dist/ ./public/
 
+    - run: chmod 777 ./bin/path_fix.sh
+    - run: ./bin/path_fix.sh
+
     - uses: peaceiris/actions-gh-pages@v3
       if: ${{ github.ref == 'refs/heads/main' }}
       with:
