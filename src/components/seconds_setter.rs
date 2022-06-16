@@ -2,6 +2,7 @@ use yew::{function_component, html, Callback, InputEvent, use_state};
 use yew_router::prelude::*;
 
 use crate::router::router::Route;
+use crate::pages::recording;
 
 #[function_component(SecondsSetter)]
 pub fn seconds_setter() -> Html {
@@ -22,11 +23,15 @@ pub fn seconds_setter() -> Html {
         })
     };
 
-    let history = use_history().unwrap();
+    let navigator = use_history().unwrap();
     let onclick = {
         let seconds = seconds.clone();
+        let query = recording::QueryParams {
+            seconds: seconds.to_string(),
+        };
+
         Callback::once(move |_| {
-          history.push(Route::Recording);
+          navigator.push_with_query(Route::Recording, query).unwrap();
         })
     };
 
