@@ -6,12 +6,12 @@ use crate::pages::recording::Recording;
 
 #[derive(Clone, Routable, PartialEq)]
 pub enum Route {
-    #[at("/")]
+    #[at("/s-t-analysis-web")]
     Top,
-    #[at("/recording")]
+    #[at("/s-t-analysis-web/recording")]
     Recording,
     #[not_found]
-    #[at("/404")]
+    #[at("/s-t-analysis-web/404")]
     NotFound,
 }
 
