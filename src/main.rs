@@ -1,46 +1,37 @@
-mod components;
+mod pages;
 
 use yew::prelude::*;
-use yew_hooks::prelude::*;
+use yew_router::prelude::*;
 
-use components::act_style_button_list::ActStyleButtonList;
-use components::seconds_setter::SecondsSetter;
+use pages::top::Top;
+use pages::recording::Recording;
+
+#[derive(Clone, Routable, PartialEq)]
+enum Route {
+    #[at("/")]
+    Top,
+    #[at("/recording")]
+    Recording,
+    #[not_found]
+    #[at("/404")]
+    NotFound,
+}
+
+fn switch(routes: &Route) -> Html {
+    match routes {
+        Route::Top => html! { <Top /> },
+        Route::Recording => html! { <Recording /> },
+        Route::NotFound => html! { { "404" } },
+    }
+}
+
 
 #[function_component(App)]
 fn app() -> Html {
-    let selected = use_state(|| "未選択".to_string());
-    let seconds = use_state(|| 5);
-
-    // TODO: データを作成する処理は時間を設定した後にする
-    let act_log = use_state(Vec::new);
-    {
-        let act_log = act_log.clone();
-        let selected = selected.clone();
-
-        use_interval(
-            move || {
-                let mut old = (*act_log).clone();
-                old.push(selected.clone());
-                act_log.set(old);
-            },
-            5000,
-        );
-    }
-
     html! {
-        <>
-            <div class="flex justify-center mt-3">
-                <h1 class="text-3xl font-bold text-center">{ "選択されている要素" }</h1>
-            </div>
-
-            <div class="flex justify-center mt-3">
-                <span class="text-2xl text-center">{ (*selected).clone() }</span>
-            </div>
-
-            <ActStyleButtonList selected={ selected } />
-
-            <SecondsSetter seconds={ seconds } />
-        </>
+        <BrowserRouter>
+            <Switch<Route> render={Switch::render(switch)} />
+        </BrowserRouter>
     }
 }
 
