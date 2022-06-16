@@ -1,6 +1,5 @@
 use yew::{function_component, html, Callback, InputEvent, use_state};
 
-
 #[function_component(SecondsSetter)]
 pub fn seconds_setter() -> Html {
     let seconds = use_state(|| 0);
