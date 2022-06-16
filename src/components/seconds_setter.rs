@@ -1,4 +1,7 @@
 use yew::{function_component, html, Callback, InputEvent, use_state};
+use yew_router::prelude::*;
+
+use crate::router::router::Route;
 
 #[function_component(SecondsSetter)]
 pub fn seconds_setter() -> Html {
@@ -18,8 +21,12 @@ pub fn seconds_setter() -> Html {
             }
         })
     };
+
+    let history = use_history().unwrap();
     let onclick = {
-        Callback::from(move |_| {
+        let seconds = seconds.clone();
+        Callback::once(move |_| {
+          history.push(Route::Recording);
         })
     };
 
